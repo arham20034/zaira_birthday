@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8eee9">
+  <title>Happy Birthday, Zaira</title>
+  <style>
+    :root { --ink:#352b35; --berry:#8c4e67; --rose:#c88d98; --cream:#fffaf5; }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 28px 16px; color: var(--ink);
+      background: radial-gradient(circle at 12% 14%, #f4d7cc 0, transparent 26rem), radial-gradient(circle at 90% 86%, #ead5df 0, transparent 28rem), #f8eee9;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    .card { position: relative; width: min(780px, 100%); overflow: hidden; border: 1px solid rgba(255,255,255,.9); border-radius: 28px; background: rgba(255,250,245,.94); box-shadow: 0 28px 90px rgba(91,57,72,.16); }
+    .hero { position: relative; overflow: hidden; min-height: 650px; display: grid; align-content: center; padding: clamp(70px,11vw,110px) 24px; text-align: center; background: linear-gradient(145deg,#f8e6dc,#fff8f1 55%,#f0e1e9); }
+    .hero::before, .hero::after { position: absolute; width: 240px; aspect-ratio: 1; border: 1px solid rgba(140,78,103,.16); border-radius: 50%; content: ''; pointer-events: none; }
+    .hero::before { top: -145px; left: -90px; box-shadow: 0 0 0 22px rgba(255,255,255,.2), 0 0 0 44px rgba(255,255,255,.15); }
+    .hero::after { right: -125px; bottom: -180px; width: 340px; box-shadow: 0 0 0 22px rgba(255,255,255,.18), 0 0 0 45px rgba(255,255,255,.14); }
+    .sparkle { position: absolute; color: #ba8290; opacity: .7; animation: drift 4s ease-in-out infinite; }
+    .sparkle.one { top: 23%; left: 13%; font-size: 25px; }
+    .sparkle.two { top: 29%; right: 15%; animation-delay: -2s; }
+    .sparkle.three { bottom: 17%; left: 23%; animation-delay: -1s; }
+    @keyframes drift { 50% { transform: translateY(-9px) rotate(12deg); } }
+    .eyebrow { margin: 0 0 18px; color: var(--berry); font: 700 .72rem/1.5 system-ui, sans-serif; letter-spacing: .22em; text-transform: uppercase; }
+    h1 { position: relative; margin: 0; color: #744257; font-size: clamp(3.3rem,10vw,6.8rem); font-weight: 400; letter-spacing: -.06em; line-height: .94; }
+    .subtitle { max-width: 490px; margin: 21px auto 0; color: #725e69; font-size: 1.08rem; line-height: 1.8; }
+    .from { display: inline-block; margin: 23px auto 0; padding: 9px 17px; border: 1px solid #d9b7bc; border-radius: 99px; color: #744257; font-style: italic; }
+    .scroll-hint { margin: 30px 0 0; color: #a58490; font: .8rem/1.4 system-ui, sans-serif; }
+
+    .note { max-width: 610px; margin: 0 auto; padding: 88px 28px 78px; text-align: center; }
+    .note-label { margin: 0 0 11px; color: #ad7c69; font: 700 .68rem/1.4 system-ui, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+    h2 { margin: 0; color: #744257; font-size: clamp(1.8rem,5vw,2.35rem); font-weight: 400; }
+    .message { margin: 15px auto 0; color: #705d68; font-size: 1.02rem; line-height: 1.85; }
+    .signoff { margin: 19px 0 0; color: var(--berry); font-size: 1.2rem; font-style: italic; }
+    .divider { display: flex; align-items: center; gap: 14px; width: 65%; margin: 0 auto; color: #be8e91; }
+    .divider::before, .divider::after { height: 1px; flex: 1; background: #eadde0; content: ''; }
+
+    /* letter */
+    .letter { max-width: 600px; margin: 0 auto; padding: 80px 28px 84px; }
+    .letter h2 { text-align: center; }
+    .paper { margin-top: 30px; padding: clamp(24px,5vw,40px); border: 1px solid #efe0dc; border-radius: 6px; background: #fffdf9; box-shadow: 0 14px 34px rgba(91,57,72,.09); }
+    .paper p { margin: 0 0 17px; color: #5f4c58; font-size: 1.04rem; line-height: 1.95; }
+    .paper p:first-child { color: #744257; font-size: 1.2rem; font-style: italic; }
+    .paper .signoff { margin: 24px 0 0; text-align: right; }
+
+    /* reasons */
+    .reasons { padding: 80px clamp(20px,6vw,56px) 84px; background: linear-gradient(#fff9f4,#fbf1f0); }
+    .reasons h2 { text-align: center; }
+    .hint { margin: 9px 0 24px; color: #897783; font: .84rem/1.6 system-ui, sans-serif; text-align: center; }
+    .reason-list { max-width: 600px; margin: 0 auto; padding: 0; list-style: none; }
+    .reason-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 6px; padding: 20px 0; border-bottom: 1px solid #ecdde0; }
+    .reason-list li:last-child { border-bottom: 0; }
+    .reason-list .heart { color: #c88d98; font-size: 1.15rem; line-height: 1.5; }
+    .reason-list h3 { margin: 0 0 4px; color: #744257; font-size: 1.12rem; font-weight: 400; }
+    .reason-list p { margin: 0; color: #705d68; font-size: .98rem; line-height: 1.8; }
+
+    /* cake */
+    .cake-section { padding: 84px 20px 88px; text-align: center; background: linear-gradient(145deg,#f8e6dc,#fff8f1 55%,#f0e1e9); }
+    .cake-wrap { position: relative; width: 220px; margin: 30px auto 0; }
+    .candles { display: flex; justify-content: center; gap: 30px; height: 62px; align-items: flex-end; }
+    .candle { position: relative; width: 12px; height: 38px; border-radius: 3px; background: repeating-linear-gradient(135deg,#fff 0 6px,#e9b6c1 6px 12px); }
+    .flame { position: absolute; left: 50%; bottom: 100%; width: 12px; height: 20px; margin-left: -6px; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: radial-gradient(circle at 50% 70%,#fff5c4,#ffb94d 65%,#f4812c); transform-origin: 50% 100%; animation: flicker .9s ease-in-out infinite alternate; transition: opacity .35s, transform .35s; }
+    @keyframes flicker { to { transform: scaleY(1.12) rotate(4deg); } }
+    .out .flame { opacity: 0; transform: scale(.2); animation: none; }
+    .tier { height: 54px; border-radius: 12px 12px 6px 6px; background: linear-gradient(#f3c8d0 0 16px,#fff1ec 16px); box-shadow: inset 0 -6px 0 rgba(140,78,103,.08); }
+    .tier.base { width: 220px; height: 62px; margin-top: -2px; background: linear-gradient(#e8b2c0 0 16px,#fbe3dc 16px); }
+    .tier.top { width: 150px; margin: 0 auto; }
+    .plate { width: 260px; height: 10px; margin: 0 -20px; border-radius: 99px; background: #e3cfd3; }
+    .btn { margin-top: 30px; padding: 12px 24px; border: 0; border-radius: 99px; color: #fff; background: #8c4e67; font: 600 .9rem/1 system-ui, sans-serif; cursor: pointer; transition: transform .15s; }
+    .btn:active { transform: scale(.96); }
+    .btn:focus-visible { outline: 2px solid #ad6680; outline-offset: 4px; }
+    .wish-result { min-height: 3.4em; max-width: 440px; margin: 22px auto 0; color: #744257; font-size: 1.1rem; font-style: italic; line-height: 1.7; }
+    .confetti { position: fixed; top: -20px; z-index: 9; pointer-events: none; animation: fall linear forwards; }
+    @keyframes fall { to { transform: translateY(105vh) rotate(540deg); opacity: .8; } }
+
+    /* wishes */
+    .wishes { max-width: 600px; margin: 0 auto; padding: 84px 28px 80px; text-align: center; }
+    .season-list { margin: 28px 0 0; padding: 0; list-style: none; text-align: left; }
+    .season-list li { padding: 18px 0 18px 22px; border-left: 2px solid #e5c9cf; color: #705d68; font-size: 1.02rem; line-height: 1.8; }
+    .season-list strong { display: block; color: #744257; font-weight: 400; font-size: 1.15rem; }
+
+    /* memories */
+    .memories { padding: 76px clamp(20px,6vw,56px) 88px; text-align: center; background: linear-gradient(#fff9f4,#f9eff1); }
+    .memories h2 { font-size: clamp(1.6rem,4vw,2rem); }
+    .memories .hint { margin-bottom: 24px; }
+    .photos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    figure { position: relative; min-width: 0; margin: 0; padding: 8px 8px 13px; border-radius: 4px; background: white; box-shadow: 0 12px 30px rgba(91,57,72,.13); transform: rotate(-1.2deg); }
+    figure + figure { transform: rotate(1.2deg); }
+    .photo { display: grid; min-height: 290px; aspect-ratio: 4/3; place-items: center; overflow: hidden; background: linear-gradient(145deg,#ecd4cb,#f7e8e3 55%,#e8d9e4); }
+    .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .photos figure:first-child .photo img { object-position: center 28%; }
+    .photo-placeholder { padding: 18px; color: #966d7d; font-size: 2.4rem; }
+    figcaption { padding-top: 11px; color: #755563; font: .78rem/1.3 system-ui, sans-serif; }
+    .closing { max-width: 520px; margin: 44px auto 0; color: #705d68; font-size: 1.02rem; line-height: 1.9; }
+    .music { display: inline-flex; align-items: center; gap: 9px; margin-top: 24px; padding: 10px 15px; border: 1px solid #e4cfd4; border-radius: 99px; color: #775466; background: rgba(255,255,255,.65); font: .78rem/1.4 system-ui, sans-serif; }
+    .music-dot { color: #ad6680; animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .35; transform: scale(.8); } }
+    footer { padding: 18px 12px 23px; color: #927e8b; font: .73rem/1.5 system-ui, sans-serif; text-align: center; }
+    @media (max-width: 480px) {
+      body { padding: 14px 10px; }
+      .card { border-radius: 21px; }
+      .photos { gap: 10px; }
+      .hero { min-height: 550px; }
+      .note { padding: 65px 22px 58px; }
+      .letter, .wishes { padding-top: 62px; padding-bottom: 62px; }
+      .memories { padding-top: 56px; padding-bottom: 64px; }
+      .photo { min-height: 190px; }
+      figure { padding: 5px 5px 10px; }
+      figcaption { font-size: .69rem; }
+      .sparkle.one { left: 6%; }
+      .sparkle.two { right: 7%; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <header class="hero">
+      <span class="sparkle one" aria-hidden="true">♡</span>
+      <span class="sparkle two" aria-hidden="true">✦</span>
+      <span class="sparkle three" aria-hidden="true">♡</span>
+      <p class="eyebrow">A little something for you</p>
+      <h1>Happy<br>Birthday,<br>Zaira!</h1>
+      <p class="subtitle">Happy birthday to my sister. I hope today is full of good food, good people and everything you like.</p>
+      <span class="from">From your brother, Arham</span>
+      <p class="scroll-hint">Scroll down, there's more ↓</p>
+    </header>
+
+    <section class="note" aria-labelledby="wish-title">
+      <p class="note-label">Just for you</p>
+      <h2 id="wish-title">A birthday wish</h2>
+      <p class="message">I hope this year is good to you, with lots of happy days, good news and the things you've been hoping for. I'm glad you're my sister.</p>
+      <p class="message">Take it easy today. Eat some cake, relax, and enjoy being the centre of attention for once.</p>
+      <p class="signoff">Love, Arham ♡</p>
+    </section>
+
+    <div class="divider" aria-hidden="true">✦</div>
+
+    <section class="letter" aria-labelledby="letter-title">
+      <h2 id="letter-title">A note from me</h2>
+      <div class="paper">
+        <p>Dear Zaira,</p>
+        <p>Happy birthday. I don't say this much, so I'll say it here: I'm really glad you're my sister.</p>
+        <p>I've seen how hard you work, and how you stay kind even when things are tough. I'm proud of you, even if I don't say it enough.</p>
+        <p>I hope this year brings you peace, success, good health and people who treat you well. Whatever happens, I've got your back.</p>
+        <p>Enjoy your day.</p>
+        <p class="signoff">Arham ♡</p>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">✦</div>
+
+    <section class="cake-section" aria-labelledby="cake-title">
+      <h2 id="cake-title">Make a wish, Zaira</h2>
+      <p class="hint">Think of a wish, then blow out the candles.</p>
+      <div class="cake-wrap" id="cake">
+        <div class="candles" aria-hidden="true">
+          <div class="candle"><span class="flame"></span></div>
+          <div class="candle"><span class="flame" style="animation-delay:-.3s"></span></div>
+          <div class="candle"><span class="flame" style="animation-delay:-.6s"></span></div>
+        </div>
+        <div class="tier top" aria-hidden="true"></div>
+        <div class="tier base" aria-hidden="true"></div>
+        <div class="plate" aria-hidden="true"></div>
+      </div>
+      <button class="btn" id="blow" type="button">Blow out the candles</button>
+      <p class="wish-result" id="wish-result" aria-live="polite"></p>
+    </section>
+
+    <section class="wishes" aria-labelledby="year-title">
+      <h2 id="year-title">What I wish for you this year</h2>
+      <ul class="season-list">
+        <li><strong>For your happiness</strong>Peace of mind, lots of laughs and people who care about you.</li>
+        <li><strong>For your work</strong>Good results for all the effort you put in.</li>
+        <li><strong>For your health</strong>Good health and enough rest.</li>
+        <li><strong>For your plans</strong>The chance to do the things you've been planning.</li>
+        <li><strong>For everyday life</strong>Small good things every day. And me annoying you a little, of course.</li>
+      </ul>
+    </section>
+
+    <div class="divider" aria-hidden="true">✦</div>
+
+    <section class="memories" aria-labelledby="memories-title">
+      <h2 id="memories-title">A couple of our photos</h2>
+      <p class="hint">Some good moments.</p>
+      <div class="photos">
+        <figure>
+          <div class="photo"><img src="images/image1.png" alt="Arham and Zaira together" onerror="this.remove(); this.nextElementSibling.hidden = false"><span class="photo-placeholder" hidden aria-hidden="true">♡</span></div>
+          <figcaption>Us ♡</figcaption>
+        </figure>
+        <figure>
+          <div class="photo"><img src="images/image2.jpeg" alt="Zaira" onerror="this.remove(); this.nextElementSibling.hidden = false"><span class="photo-placeholder" hidden aria-hidden="true">✿</span></div>
+          <figcaption>Birthday girl ✿</figcaption>
+        </figure>
+      </div>
+      <p class="closing">Have a great year ahead, Zaira. Thank you for everything. Now go enjoy your day.</p>
+      <p class="signoff" style="margin-top: 28px">Waiting for a treat! 🎂</p>
+      <div class="music"><span class="music-dot" aria-hidden="true">♫</span><span>A birthday song for you</span></div>
+      <audio id="birthday-song" src="./song.mp3" autoplay="autoplay" loop preload="auto" playsinline></audio>
+    </section>
+    <footer>Made for Zaira · Happy Birthday!</footer>
+  </main>
+  <script>
+    const song = document.querySelector('#birthday-song');
+    song.autoplay = true;
+    song.volume = 1;
+    song.play().catch(() => {});
+
+    // Confetti
+    const bits = ['🎉','✨','💖','🌸','🎂','🎈'];
+    function confetti() {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      for (let i = 0; i < 36; i++) {
+        const s = document.createElement('span');
+        s.className = 'confetti';
+        s.textContent = bits[i % bits.length];
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.fontSize = 14 + Math.random() * 18 + 'px';
+        s.style.animationDuration = 2.4 + Math.random() * 2.4 + 's';
+        s.style.animationDelay = Math.random() * .6 + 's';
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 6000);
+      }
+    }
+
+    // Candles
+    const cake = document.querySelector('#cake');
+    const blow = document.querySelector('#blow');
+    const result = document.querySelector('#wish-result');
+    blow.addEventListener('click', () => {
+      if (cake.classList.contains('out')) {
+        cake.classList.remove('out');
+        blow.textContent = 'Blow out the candles';
+        result.textContent = '';
+        return;
+      }
+      cake.classList.add('out');
+      blow.textContent = 'Light them again';
+      result.textContent = 'Wish made! Hope it comes true this year ♡';
+      confetti();
+    });
+
+  </script>
+</body>
+</html>
